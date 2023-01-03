@@ -90,14 +90,14 @@ ymax <- max(layer_scales(G2_eg)$y$range$range)
 
 
 Fig_7A <- 
-  ggarrange(G1_eg + ylim(-0.5*(ymax- max(layer_scales(G1_eg)$y$range$range)),
-                         ymax + 0.5*(ymax- max(layer_scales(G1_eg)$y$range$range))),
-            G2_eg + xlim(-0.5*(xmax- max(layer_scales(G2_eg)$x$range$range)),
-                         xmax + 0.5*(xmax- max(layer_scales(G2_eg)$x$range$range))),
-            G3_eg + ylim(-0.5*(ymax- max(layer_scales(G3_eg)$y$range$range)),
-                         ymax + 0.5*(ymax- max(layer_scales(G3_eg)$y$range$range))) +
-              xlim(-0.5*(xmax- max(layer_scales(G3_eg)$x$range$range)),
-                   xmax + 0.5*(xmax- max(layer_scales(G3_eg)$x$range$range))),
+  ggarrange(G1_eg + expand_limits(y = c(median(layer_scales(G1_eg)$y$range$range) - 0.5*ymax,
+                                        median(layer_scales(G1_eg)$y$range$range) + 0.5*ymax)),
+            G2_eg + expand_limits(x = c(median(layer_scales(G2_eg)$x$range$range) - 0.5*xmax,
+                                        median(layer_scales(G2_eg)$x$range$range) + 0.5*xmax)),
+            G3_eg + expand_limits(x = c(median(layer_scales(G3_eg)$x$range$range) - 0.5*xmax,
+                                        median(layer_scales(G3_eg)$x$range$range) + 0.5*xmax),
+                                  y = c(median(layer_scales(G3_eg)$y$range$range) - 0.5*ymax,
+                                        median(layer_scales(G3_eg)$y$range$range) + 0.5*ymax)),
             nrow = 1, ncol = 3)
 Fig_7A
 
